@@ -11,13 +11,13 @@ router.post('/', function(req, res) {
 
   if (body == null || body.email == null || body.password == '') {
     res.status(422)
-    res.json({ ok: false, error: 'email or password is empty' })
+    res.json({ ok: false, message: 'email or password is empty' })
   } else {
     const user = db.createUser(body.email, body.password)
 
     if (user === null) {
       res.status(409)
-      res.json({ ok: false, error: 'user alredy exist' })
+      res.json({ ok: false, message: 'user alredy exist' })
     } else {
       const token = jwt.sign(user, secretKey)
 

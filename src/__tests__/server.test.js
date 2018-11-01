@@ -78,9 +78,9 @@ describe("App server", () => {
       })
 
       it("status 409", () => expect(response.statusCode).toBe(409))
-      it("body has key token", () => expect(response.body.error).toBeDefined())
+      it("body has key token", () => expect(response.body.message).toBeDefined())
       it("error is 'user alredy exist'", () =>
-        expect(response.body.error).toBe("user alredy exist"))
+        expect(response.body.message).toBe("user alredy exist"))
     })
     describe("post /user with partial credentials", () => {
       it("status 422 without email", done => {
